@@ -1,74 +1,177 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(-45deg, #514A9D, #24C6DC, #ff6e7f, #bfe9ff);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-  color: #fff;
-}
+/* App.css */
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f0f0;
 }
 
 .App {
-  text-align: center;
+  min-height: 100vh;
   padding: 2rem;
+  color: #fff;
+  text-align: center;
+  backdrop-filter: blur(5px);
 }
 
 .brand-title {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
   font-weight: bold;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 
 .search-box {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .search-box input {
-  padding: 0.6rem 1rem;
-  width: 250px;
+  padding: 0.7rem 1rem;
   border: none;
-  border-radius: 8px 0 0 8px;
-  outline: none;
+  border-radius: 25px;
   font-size: 1rem;
+  width: 250px;
+  margin-right: 0.5rem;
+  outline: none;
 }
 
 .search-box button {
-  padding: 0.6rem 1rem;
-  background-color: #333;
-  color: white;
+  padding: 0.7rem 1.2rem;
   border: none;
-  border-radius: 0 8px 8px 0;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 1rem;
+  backdrop-filter: blur(3px);
+  transition: background 0.3s ease;
 }
 
-.weather-card {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 1.5rem;
-  margin: 1rem auto;
-  max-width: 400px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+.search-box button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.weather-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.weather-condition {
+  flex: 1 1 100%;
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+}
+
+.card {
+  flex: 1 1 250px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  text-align: center;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.card p {
+  font-size: 1.8rem;
+  margin: 0.5rem 0 0 0;
+  color: #fff;
+}
+
+.loading-spinner {
+  margin-top: 2rem;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .error {
-  color: #ff4d4d;
-  font-weight: bold;
-}
-
-.loading {
-  font-style: italic;
+  color: #ffdddd;
+  background: rgba(255, 0, 0, 0.2);
+  border: 1px solid red;
+  padding: 0.5rem;
+  border-radius: 8px;
+  width: max-content;
+  margin: 1rem auto;
 }
 
 footer {
-  margin-top: 2rem;
+  margin-top: 3rem;
+  color: #fff;
   font-size: 0.9rem;
-  color: #ddd;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .card, .weather-condition {
+    flex: 1 1 100%;
+  }
+
+  .search-box input {
+    width: 70%;
+  }
+}
+.weather-condition h2 {
+  animation: emoji-bounce 2s infinite;
+}
+
+@keyframes emoji-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+.App.clear {
+  background-color: #fdd835; /* Sunny yellow */
+  color: #333;
+}
+
+.App.clouds {
+  background-color: #90a4ae; /* Cloudy grey-blue */
+  color: #fff;
+}
+
+.App.rain {
+  background: linear-gradient(135deg, #4a90e2, #0f2027);
+  color: #fff;
+}
+
+.App.snow {
+  background-color: #e0f7fa; /* Light snow blue */
+  color: #333;
+}
+
+.App.thunderstorm {
+  background: linear-gradient(to right, #434343, #000000); /* Dark storm */
+  color: #fff;
+}
+
+.App.default {
+  background-color: #bdbdbd; /* fallback */
+  color: #000;
 }
